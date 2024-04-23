@@ -1,8 +1,40 @@
 {% extends 'puddle/base.html' %} 
+{%block title%}Welcome{% endblock %} 
+{%block content%}
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Newest items</h2>
 
-{%block title%}Welcome{% endblock %}
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in items %}
+                <div>
+                <a href="#">
+                    <div>
+                    <img src="{{item.image.url}}" class="rounded-t-xl" />
+                    </div>
+                    <div class="p-6 bg-white rounded-b-xl">
+                    <h4 class="text-xl">{{item.name}}</h4>
+                    <p class="text-gray-500">Цена: {{item.price}} руб.</p>
+                    </div>
+                </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Categories</h2>
 
-{%block content%%}
-<h1>The Front Page</h1>
+    <div class="grid grid-cols-3 gap-3">
+        {% for category in categories %}
+        <div>
+            <a href="#">
+            <div class="p-6 bg-white rounded-b-xl">
+                <h4 class="text-xl">{{item.name}}</h4>
+                <p class="text-gray-500">{{ category.items.count }}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
 {% endblock %}
